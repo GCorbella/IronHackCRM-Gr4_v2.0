@@ -3,8 +3,8 @@ package com.CRM.CRM.models;
 import javax.persistence.*;
 
 @Entity
-public class Lead {
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Hook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,10 +17,10 @@ public class Lead {
     private SalesRep salesRep;
 
     //constructor
-    public Lead() {
+    public Hook() {
     }
 
-    public Lead(String name, String phoneNumber, String email, String companyName, SalesRep salesRep) {
+    public Hook(String name, String phoneNumber, String email, String companyName, SalesRep salesRep) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;

@@ -1,9 +1,9 @@
 package com.CRM.CRM.repositories;
 
-import com.CRM.CRM.models.Lead;
+import com.CRM.CRM.models.Hook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LeadRepository extends JpaRepository<Lead, Integer> {
+public interface HookRepository extends JpaRepository<Hook, Integer> {
 }

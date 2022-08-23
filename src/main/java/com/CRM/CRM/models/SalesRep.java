@@ -11,7 +11,7 @@ public class SalesRep {
     private int id;
     private String name;
     @OneToMany(mappedBy = "salesRep")
-    private List<Lead> leads;
+    private List<Hook> hooks;
     @OneToMany(mappedBy = "salesRep")
     private List<Opportunity> opportunities;
 
@@ -28,8 +28,8 @@ public class SalesRep {
         this.name = name;
     }
 
-    public void setLeads(List<Lead> leads) {
-        this.leads = leads;
+    public void setHooks(List<Hook> hooks) {
+        this.hooks = hooks;
     }
 
     public void setOpportunities(List<Opportunity> opportunities) {
@@ -45,8 +45,8 @@ public class SalesRep {
         return name;
     }
 
-    public List<Lead> getLeads() {
-        return leads;
+    public List<Hook> getHooks() {
+        return hooks;
     }
 
     public List<Opportunity> getOpportunities() {

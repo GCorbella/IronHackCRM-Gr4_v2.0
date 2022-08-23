@@ -4,12 +4,8 @@ package com.CRM.CRM.models;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-public class Contact extends Lead{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Entity(name = "contacts")
+public class Contact extends Hook {
     @OneToMany(mappedBy = "decisionMaker")
     private List<Opportunity> opportunities;
     @ManyToOne
@@ -18,12 +14,6 @@ public class Contact extends Lead{
 
     //constructors
     public Contact() {
-    }
-
-    public Contact(String name, String phoneNumber, String email, String companyName, SalesRep salesRep, List<Opportunity> opportunities, Account account) {
-        super(name, phoneNumber, email, companyName, salesRep);
-        this.opportunities = opportunities;
-        this.account = account;
     }
 
     //setters
@@ -35,10 +25,6 @@ public class Contact extends Lead{
         this.account = account;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     //getters
     public List<Opportunity> getOpportunities() {
         return opportunities;
@@ -46,9 +32,5 @@ public class Contact extends Lead{
 
     public Account getAccount() {
         return account;
-    }
-
-    public int getId() {
-        return id;
     }
 }
