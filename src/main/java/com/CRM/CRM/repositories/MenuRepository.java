@@ -14,9 +14,13 @@ import java.util.Optional;
 
 public interface MenuRepository extends JpaRepository {
 
-    List<Hook> findHookBySalesRep (SalesRep salesRep);
+    //A count of Leads by SalesRep
+    @Query("SELECT sales_rep.name, COUNT(hook.id) FROM hook JOIN sales_rep ON hook.sales_rep_id = sales_rep.id GROUP BY sales_rep_id")
+    List<Object[]> findHooksBySalesRep ();
 
-    List<Opportunity> findAllOpportunitiesBySalesRep(SalesRep salesRep);
+    //A count of all Opportunities by SalesRep
+    @Query("SELECT sales_rep.name, COUNT(opportunity.id) FROM opportunity JOIN sales_rep ON opportunity.sales_rep_id = sales_rep.id GROUP BY sales_rep_id")
+    List<Object[]> findOpportunitiesBySalesRep();
 
     @Query("SELECT * FROM opportunity WHERE status=CLOSED_WON GROUP BY sales_rep")
     List<Object[]> findAllClosedWonOpportunitiesBySalesRep();
