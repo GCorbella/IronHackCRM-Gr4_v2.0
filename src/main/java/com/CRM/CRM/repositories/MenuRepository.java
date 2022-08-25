@@ -22,57 +22,61 @@ public interface MenuRepository extends JpaRepository {
     @Query("SELECT sales_rep.name, COUNT(opportunity.id) FROM opportunity JOIN sales_rep ON opportunity.sales_rep_id = sales_rep.id GROUP BY sales_rep_id")
     List<Object[]> findOpportunitiesBySalesRep();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_WON GROUP BY sales_rep")
+    @Query("SELECT sales_rep.name, COUNT(opportunity.id) FROM opportunity JOIN sales_rep ON opportunity.sales_rep_id = sales_rep.id WHERE opportunity.status = CLOSED_WON GROUP BY sales_rep_id")
     List<Object[]> findAllClosedWonOpportunitiesBySalesRep();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_LOST GROUP BY sales_rep")
+    @Query("SELECT sales_rep.name, COUNT(opportunity.id) FROM opportunity JOIN sales_rep ON opportunity.sales_rep_id = sales_rep.id WHERE opportunity.status = CLOSED_LOST GROUP BY sales_rep_id")
     List<Object[]> findAllClosedLostOpportunitiesBySalesRep();
 
-    @Query("SELECT * FROM opportunity WHERE status=OPEN GROUP BY sales_rep")
+    @Query("SELECT sales_rep.name, COUNT(opportunity.id) FROM opportunity JOIN sales_rep ON opportunity.sales_rep_id = sales_rep.id WHERE opportunity.status = OPEN  GROUP BY sales_rep_id")
     List<Object[]> findAllOpenOpportunitiesBySalesRep();
 
-    List<Opportunity> findAllOpportunitiesByProduct(Product product);
+    @Query("SELECT product, COUNT(id) FROM opportunity GROUP BY product")
+    List<Object[]> findAllOpportunitiesByProduct();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_WON GROUP BY product")
+    @Query("SELECT product, COUNT(id) FROM opportunity WHERE status=CLOSED_WON GROUP BY product")
     List<Object[]> findAllClosedWonOpportunitiesByProduct();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_LOST GROUP BY product")
+    @Query("SELECT product, COUNT(id) FROM opportunity WHERE status=CLOSED_LOST GROUP BY product")
     List<Object[]> findAllClosedLostOpportunitiesByProduct();
 
-    @Query("SELECT * FROM opportunity WHERE status=OPEN GROUP BY product")
+    @Query("SELECT product, COUNT(id) FROM opportunity WHERE status=OPEN GROUP BY product")
     List<Object[]> findAllOpenOpportunitiesByProduct();
 
-    List<Opportunity> findAllOpportunitiesByCountry(String country);
+    @Query("SELECT account.country, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account GROUP BY account.country")
+    List<Object[]> findAllOpportunitiesByCountry();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_WON GROUP BY account.country")
+    @Query("SELECT account.country, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account WHERE opportunity.status = CLOSED_WON GROUP BY account.country")
     List<Object[]> findAllClosedWonOpportunitiesByCountry();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_LOST GROUP BY account.country")
+    @Query("SELECT account.country, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account WHERE opportunity.status = CLOSED_LOST GROUP BY account.country")
     List<Object[]> findAllClosedLostOpportunitiesByCountry();
 
-    @Query("SELECT * FROM opportunity WHERE status=OPEN GROUP BY account.country")
+    @Query("SELECT account.country, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account WHERE opportunity.status = OPEN GROUP BY account.country")
     List<Object[]> findAllOpenOpportunitiesByCountry();
 
-    List<Opportunity> findAllOpportunitiesByCity(String city);
+    @Query("SELECT account.city, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account GROUP BY account.city")
+    List<Object[]> findAllOpportunitiesByCity();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_WON GROUP BY account.city")
+    @Query("SELECT account.city, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account WHERE opportunity.status = CLOSED_WON GROUP BY account.city")
     List<Object[]> findAllClosedWonOpportunitiesByCity();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_LOST GROUP BY account.city")
+    @Query("SELECT account.city, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account WHERE opportunity.status = CLOSED_LOST GROUP BY account.city")
     List<Object[]> findAllClosedLostOpportunitiesByCity();
 
-    @Query("SELECT * FROM opportunity WHERE status=OPEN GROUP BY account.city")
+    @Query("SELECT account.city, COUNT(opportunity.id) FROM opportunity JOIN account ON opportunity.account = account WHERE opportunity.status = OPEN GROUP BY account.city")
     List<Object[]> findAllOpenOpportunitiesByCity();
 
-    List<Opportunity> findAllOpportunitiesByIndustry(Industry industry);
+    @Query("SELECT industry, COUNT(id) FROM opportunity GROUP BY industry")
+    List<Object[]> findAllOpportunitiesByIndustry();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_WON GROUP BY industry")
+    @Query("SELECT industry, COUNT(id) FROM opportunity WHERE status = CLOSED_WON GROUP BY industry")
     List<Object[]> findAllClosedWonOpportunitiesByIndustry();
 
-    @Query("SELECT * FROM opportunity WHERE status=CLOSED_LOST GROUP BY industry")
+    @Query("SELECT industry, COUNT(id) FROM opportunity WHERE status = CLOSED_LOST GROUP BY industry")
     List<Object[]> findAllClosedLostOpportunitiesByIndustry();
 
-    @Query("SELECT * FROM opportunity WHERE status=OPEN GROUP BY industry")
+    @Query("SELECT industry, COUNT(id) FROM opportunity WHERE status = OPEN GROUP BY industry")
     List<Object[]> findAllOpenOpportunitiesByIndustry();
 
     @Query("SELECT AVG (employee_count) FROM account AS mean_employee_count")
