@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+//código Aldo
 @Component
 public class Menu {
 
@@ -33,7 +34,7 @@ public class Menu {
             //console encoding
             "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" +
                     "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"+
-            "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" +
+                    "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" +
                     "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"+
                     "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
             "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" +
@@ -70,7 +71,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\r*** Welcome to CRM of Group 4***");
-         Thread.sleep(1000);
+        Thread.sleep(1000);
 
         while (true){
             System.out.println("\nPlease type help to see all commands:");
@@ -107,7 +108,7 @@ public class Menu {
                         //hookRepository.findAllLeads();
                         hookRepository.findAll();
                     if(fullCommand.matches("show salesReps")) {
-                        //salesRepRepository.findAllSalesReps();
+                        // salesRepRepository.findAllSalesReps();
                         salesRepRepository.findAll();
 
                     }
@@ -126,10 +127,10 @@ public class Menu {
                 case ("close-lost"):
                     // Close
                     if(fullCommand.matches("close-won [0-9]+")){// .closeWon(commandArray.get(1));
-                         }
+                    }
                     else if(fullCommand.matches("close-lost [0-9]")){
 
-                       // .closeLost(commandArray.get(1));
+                        // .closeLost(commandArray.get(1));
                     }
                     else System.out.println(notValidCommand);
                     break;
@@ -137,30 +138,30 @@ public class Menu {
                 case ("report"):
                     // Report
 
-                    /*
-                    if(fullCommand.matches("report lead by salesrep")) hookRepository.findLeadsBySalesRep();
+                    if(fullCommand.matches("report lead by salesrep")) hookRepository.findHooksBySalesRep();
                     else if(fullCommand.matches("report opportunity by salesrep")) opportunityRepository.findOpportunitiesBySalesRep();
-                    else if(fullCommand.matches("report closed-won by salesrep"))opportunityRepository.findWonOpportunitiesBySalesRep();
-                    else if(fullCommand.matches("report closed-lost by salesrep"))opportunityRepository.findLostOpportunitiesBySalesRep();
-                    else if(fullCommand.matches("report open by salesrep")) opportunityRepository.findOpenOpportunitiesBySalesRep();
-                    else if(fullCommand.matches("report opportunity by product")) opportunityRepository.countByProduct();
-                    else if(fullCommand.matches("report closed-won by product")) opportunityRepository.countWonByProduct();
-                    else if(fullCommand.matches("report closed-lost by product")) opportunityRepository.countLostByProduct();
-                    else if(fullCommand.matches("report open by product")) opportunityRepository.countOpenByProduct();
-                    else if(fullCommand.matches("report opportunity by country")) opportunityRepository.countByCountry();
-                    else if(fullCommand.matches("report closed-won by country")) opportunityRepository.countWonByCountry();
-                    else if(fullCommand.matches("report closed-lost by country")) opportunityRepository.countLostByCountry();
-                    else if(fullCommand.matches("report open by country")) opportunityRepository.countOpenByCountry();
-                    else if(fullCommand.matches("report opportunity by city")) opportunityRepository.countByCity();
-                    else if(fullCommand.matches("report closed-won by city")) opportunityRepository.countWonByCity();
-                    else if(fullCommand.matches("report closed-lost by city")) opportunityRepository.countLostByCity();
-                    else if(fullCommand.matches("report open by city")) opportunityRepository.countOpenByCity();
-                    else if(fullCommand.matches("report opportunity by industry")) opportunityRepository.countByIndustry();
-                    else if(fullCommand.matches("report closed-won by industry")) opportunityRepository.countWonByIndustry();
-                    else if(fullCommand.matches("report closed-lost by industry")) opportunityRepository.countLostByIndustry();
-                    else if(fullCommand.matches("report open by industry")) opportunityRepository.countOpenByIndustry();
+                    else if(fullCommand.matches("report closed-won by salesrep"))opportunityRepository.findAllClosedWonOpportunitiesBySalesRep();
+                    else if(fullCommand.matches("report closed-lost by salesrep"))opportunityRepository.findAllClosedLostOpportunitiesBySalesRep();
+                    else if(fullCommand.matches("report open by salesrep")) opportunityRepository.findAllOpenOpportunitiesBySalesRep();
+                    else if(fullCommand.matches("report opportunity by product")) opportunityRepository.findAllOpportunitiesByProduct();
+                    else if(fullCommand.matches("report closed-won by product")) opportunityRepository.findAllClosedWonOpportunitiesByProduct();
+                    else if(fullCommand.matches("report closed-lost by product")) opportunityRepository.findAllClosedLostOpportunitiesByProduct();
+                    else if(fullCommand.matches("report open by product")) opportunityRepository.findAllOpenOpportunitiesByProduct();
+                    else if(fullCommand.matches("report opportunity by country")) opportunityRepository.findAllOpportunitiesByCountry();
+                    else if(fullCommand.matches("report closed-won by country")) opportunityRepository.findAllClosedWonOpportunitiesByCountry();
+                    else if(fullCommand.matches("report closed-lost by country")) opportunityRepository.findAllClosedLostOpportunitiesByCountry();
+                    else if(fullCommand.matches("report open by country")) opportunityRepository.findAllOpenOpportunitiesByCountry();
+                    else if(fullCommand.matches("report opportunity by city")) opportunityRepository.findAllOpportunitiesByCity();
+                    else if(fullCommand.matches("report closed-won by city")) opportunityRepository.findAllClosedWonOpportunitiesByCity();
+                    else if(fullCommand.matches("report closed-lost by city")) opportunityRepository.findAllClosedLostOpportunitiesByCity();
+                    else if(fullCommand.matches("report open by city")) opportunityRepository.findAllOpenOpportunitiesByCity();
+                    else if(fullCommand.matches("report opportunity by industry")) opportunityRepository.findAllOpportunitiesByIndustry();
+                    else if(fullCommand.matches("report closed-won by industry")) opportunityRepository.findAllClosedWonOpportunitiesByIndustry();
+                    else if(fullCommand.matches("report closed-lost by industry")) opportunityRepository.findAllClosedLostOpportunitiesByIndustry();
+                    else if(fullCommand.matches("report open by industry")) opportunityRepository.findAllOpenOpportunitiesByIndustry();
                     else System.out.println(notValidCommand);
-*/
+                    /*
+                     */
                     break;
 
                 case ("mean"):
@@ -168,19 +169,19 @@ public class Menu {
                 case ("max"):
                 case ("min"):
                     if(fullCommand.matches("mean employeecount")) {
-                        //opportunityRepository.meanEmployeeCount();
+                        opportunityRepository.findEmployeeCountAverage();
                     }
-         /*           else if(fullCommand.matches("median employeecount")) opportunityRepository.medianEmployeeCount();
-                    else if(fullCommand.matches("max employeecount")) opportunityRepository.maxEmployeeCount();
-                    else if(fullCommand.matches("min employeecount")) opportunityRepository.minEmployeeCount();
-                    else if(fullCommand.matches("mean quantity")) opportunityRepository.meanQuantity();
-                    else if(fullCommand.matches("median quantity")) opportunityRepository.medianQuantity();
-                    else if(fullCommand.matches("max quantity")) opportunityRepository.maxQuantity();
-                    else if(fullCommand.matches("min quantity")) opportunityRepository.minQuantity();
-                    else if(fullCommand.matches("mean opps per account")) opportunityRepository.meanOpportunityByAccount();
-                    else if(fullCommand.matches("median opps per account")) opportunityRepository.medianOpportunityByAccount();
-                    else if(fullCommand.matches("max opps per account")) opportunityRepository.maxOppsByAccount();
-                    else if(fullCommand.matches("min opps per account")) opportunityRepository.minOppsByAccount();*/
+                    else if(fullCommand.matches("median employeecount")) opportunityRepository.findEmployeeCountMedian();
+                    else if(fullCommand.matches("max employeecount")) opportunityRepository.findEmployeeCountMax();
+                    else if(fullCommand.matches("min employeecount")) opportunityRepository.findEmployeeCountMin();
+                    else if(fullCommand.matches("mean quantity")) opportunityRepository.findProductQuantityAverage();
+                    else if(fullCommand.matches("median quantity")) opportunityRepository.findProductQuantityMedian();
+                    else if(fullCommand.matches("max quantity")) opportunityRepository.findProductQuantityMax();
+                    else if(fullCommand.matches("min quantity")) opportunityRepository.findProductQuantityMin();
+                    else if(fullCommand.matches("mean opps per account")) opportunityRepository.findOpportunitiesPerAccountAverage();
+                    else if(fullCommand.matches("median opps per account")) opportunityRepository.findOpportunitiesPerAccountMedian();
+                    else if(fullCommand.matches("max opps per account")) opportunityRepository.findOpportunitiesPerAccountMax();
+                    else if(fullCommand.matches("min opps per account")) opportunityRepository.findOpportunitiesPerAccountMin();
                     else System.out.println(notValidCommand);
 
                     break;

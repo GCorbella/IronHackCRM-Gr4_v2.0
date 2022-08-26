@@ -21,6 +21,7 @@ public class Register {
     SalesRepRepository salesRepRepository;
 
 
+    //Código de Aldo
     public void newSalesRep() {
         String tempName = inputHelper.setName();
         SalesRep tempSalesRep=  new SalesRep(tempName);
