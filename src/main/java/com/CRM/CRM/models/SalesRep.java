@@ -19,6 +19,10 @@ public class SalesRep {
     public SalesRep() {
     }
 
+    public SalesRep(String name) {
+        this.name = name;
+    }
+
     //setters
     public void setId(int id) {
         this.id = id;
